@@ -60,6 +60,14 @@
 
 	var _questionScreen2 = _interopRequireDefault(_questionScreen);
 
+	var _Welcome = __webpack_require__(217);
+
+	var _Welcome2 = _interopRequireDefault(_Welcome);
+
+	var _ = __webpack_require__(218);
+
+	var _2 = _interopRequireDefault(_);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//
@@ -71,10 +79,16 @@
 
 
 	  render: function render() {
-	    return _react2.default.createElement(_questionScreen2.default, null);
+	    return _react2.default.createElement(
+	      _reactRouter.Router,
+	      { history: _reactRouter.browserHistory },
+	      _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome' }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/welcome', component: _Welcome2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/mars-test', component: _questionScreen2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
+	    );
 	  }
 	});
-
 	//components
 
 
@@ -24765,6 +24779,60 @@
 	ReactDOM.render(React.createElement(Question, null), document.querySelector('#react-mount'));
 
 	module.exports = Question;
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(158);
+
+	var Welcome = React.createClass({
+	  displayName: 'Welcome',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement('button', { onClick: this.takeTest })
+	    );
+	  }
+
+	});
+
+	module.exports = Welcome;
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(158);
+
+	var NotFound = React.createClass({
+	  displayName: 'NotFound',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      '404 Not Found'
+	    );
+	  }
+
+	});
+
+	module.exports = NotFound;
 
 /***/ }
 /******/ ]);
