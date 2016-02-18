@@ -1,86 +1,92 @@
-// Variables oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-var gulp = require ('gulp');
-var uglify = require('gulp-uglify');
-var browserSync = require('browser-sync').create();
+// 'use strict';
+
+// DA PLUGINS
+var gulp = require('gulp');
+var webpack = require('webpack-stream');
+var browserSync = require('browser-sync');
+var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
-var minifyCSS = require('gulp-minify-css');
-var autoprefixer = require('gulp-autoprefixer');
-// FOR REACT
+
+// DA PATHS
+
+var jsMain = './src/**/*jsx';
+var sassMain = './src/main.scss';
+var htmlPath = './src/index.html';
+var basePath = './src';
+var buildPath = './build';
+
 var babel = require('gulp-babel');
+var autoprefixer = require('gulp-autoprefixer');
+var minifyCSS = require('gulp-minify-css');
+var rename = require('gulp-rename');
+
+
 var browserify = require('gulp-browserify');
-var browserSync = require('browser-sync');
 
 
-// Declarations ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-gulp.task('watch', function(){
-   gulp.watch(['./scss/*.scss'], ['sass-process']);
-   gulp.watch(['./js/*.js'], ['uglify']);
-   gulp.watch(['./build/*.js', './build/*.css', 'index.html']).on('change', browserSync.reload);
+gulp.task('sass', function(){
+ gulp.src('./scss/style.scss')
+ .pipe(sass())
+ .pipe(autoprefixer({
+   browsers: ['last 2 versions']
+ }))
+ .pipe(gulp.dest('./build/css'))
+ .pipe(minifyCSS())
+ .pipe(rename('style.min.css'))
+ .pipe(gulp.dest('./build/css'));
 });
 
-//This watched files for any changes then reloads the browser page when any change has been saved.  oooooooooooooooooooooooooooooooooooooo
 
-gulp.task('uglify', function(){
-   gulp.src('./js/*.js')
-   .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-   .pipe(uglify())
-   .pipe(gulp.dest('./build'));
-});
-
-//This ugilifies the javascript file then stores it in a build/js folder oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-gulp.task('browserSync', function(){
-   browserSync.init({
-      server: {
-         baseDir:'./'
-      }
-   });
-});
-// Runs browserSync on it's own. oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-gulp.task('sass-process', function(){
-   gulp.src('./scss/main-style.scss')
-   .pipe(sass())
-   .pipe(autoprefixer({
-      browsers: ['last 2 versions']}))
-   .pipe(gulp.dest('./build'))
-   .pipe(minifyCSS())
-   .pipe(rename('style.min.css'))
-   .pipe(gulp.dest('./build'));
-});
-
-// Vendor prefixes added to SASS file, compiles, minifies, then inserts it in the build/css folder -oooooooooooooooooooooooooooooooooooo
-
-
-gulp.task('default', ['watch', 'browserSync']);
-
-
-// COMPILE REACT ------------------------------------------------------------------------------
 
 gulp.task('compile-react', function() {
-	return gulp.src('main.jsx')
-    .pipe(plumber())
-		.pipe(babel({
-			presets: ['es2015', 'react']
-		}))
-		.pipe(browserify({
-			insertGlobals: true,
-			debug: true
-		}))
-		.pipe(gulp.dest('./'));
+ return gulp.src('main.jsx')
+ .pipe(plumber())
+ .pipe(babel({
+   presets: ['es2015', 'react']
+ }))
+ .pipe(browserify({
+   insertGlobals: true,
+   debug: true
+ }))
+ .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('browser-sync', ['compile-react'], function() {
 
-	browserSync.init({
-		server: './'
-	});
 
-	gulp.watch(['main.jsx'], ['compile-react']);
-	gulp.watch(['main.js', 'index.html']).on('change', browserSync.reload);
+ browserSync.init({
+   server: {
+     baseDir: './'
+   }
+ });
+
+ gulp.watch(['./scss/*.scss'], ['sass']);
+ gulp.watch(['main.jsx'], ['compile-react']);
+ gulp.watch(['main.js','./build/css/*.css', 'index.html']).on('change', browserSync.reload);
+
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['browser-sync', 'sass']);
+
+
+// need this for project
+gulp.task('compile-react', function() {
+	return gulp.src('main.jsx')
+  .pipe(webpack({
+    output: {
+      filename: 'main.js'
+    },
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+              presets:['react', 'es2015']
+            }
+        }]
+    }
+  }))
+  .pipe(gulp.dest('./'));
+});

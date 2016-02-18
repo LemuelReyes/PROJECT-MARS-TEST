@@ -1,3 +1,18 @@
+@font-face {
+   font-family: 'digital-dream';
+   src: url('css/fonts/digitaldream_regular_macroman-webfont.eot');
+   src: url('css/fonts/digitaldream_regular_macroman-webfont.eot?#iefix')
+   format('embedded-opentype'),
+   url('css/fonts/digitaldream_regular_macroman-webfont.woff')
+   format('woff'),
+   url('css/fonts/digitaldream_regular_macroman-webfont.ttf')
+   format('truetype'),
+   url('css/fonts/digitaldream_regular_macroman-webfont.svg#robotoregular')
+   format('svg');
+   font-weight: normal;
+   font-style: normal;
+}
+
 body {
 
   font-size:16px;
@@ -30,11 +45,13 @@ header {
 }
 
 .clock-button {
+  font-family: 'digital-dream';
+  font-weight: normal;
+  font-style: normal;
   background-color: #222222;
   height: 4rem;
   width: 15rem;
   align-self: center;
-  font-family: 'digital-clock';
   font-size: 4rem;
   text-align: center;
   color: lightgreen;
@@ -73,7 +90,7 @@ h1 {
   font-size: 6rem;
   transform: rotate(-90deg);
   position: relative;
-  top: -15rem;
+  top: -13rem;
   left: 3rem;
 }
 
