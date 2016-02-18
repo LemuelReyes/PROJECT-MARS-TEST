@@ -6,6 +6,7 @@ var MARS = React.createClass ({
 render: function(){
    return (
      //this sets the color background
+     <div>
      <body>
        <header>
          <h1>mars</h1>
@@ -16,7 +17,11 @@ render: function(){
 
        </header>
 
+    <div className="button-flex">
+     <button>Begin Evaluation</button>
+    </div>
      </body>
+    </div>
 
    )
 }
