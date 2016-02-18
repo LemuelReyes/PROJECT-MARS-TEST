@@ -1,0 +1,58 @@
+/*.background {
+  background-color: #FF8B69;
+  height: 100vh;
+  width: 100vw;
+}*/
+
+
+body {
+
+  font-size:16px;
+  color: #ffffff;
+  font-family: Open Sans Light;
+
+  background-color: #FF8B69;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+header {
+  background-color: white;
+  height: 100vh;
+  width: 10vw;
+  flex: 0 1 20%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  color: #e2231a;
+}
+
+footer {
+  color: #c2c2c2;
+}
+
+.border {
+  color: #dbdbdb;
+}
+
+h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #EDF1F2;
+  font-size: 5rem;
+  transform: rotate(-90deg);
+  position: relative;
+  top: -13rem;
+}
+
+.rocket-container {
+  background-color: #FF8B69;
+}
+
+i.fa-space-shuttle {
+}
