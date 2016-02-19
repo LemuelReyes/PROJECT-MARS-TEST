@@ -7,7 +7,13 @@ var Question = React.createClass ({
 
 render: function(){
    return (
-    <div>Hello</div>
+     <div className="wrapper">
+
+      <div className="clock-button">
+        <Timer/>
+      </div>
+
+    </div> //ends wrapper div
   )
 }
 

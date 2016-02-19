@@ -10,11 +10,10 @@ var Welcome = React.createClass ({
        //this sets the color background
        <div className="wrapper">
 
-        <div className="clock-button">50</div>
-
         <div className="button-flex">
           <button>Begin Evaluation</button>
         </div>
+        
       </div> //ends wrapper div
 
     );

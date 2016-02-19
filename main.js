@@ -24741,9 +24741,14 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
-	      'Hello'
-	    );
+	      { className: 'wrapper' },
+	      React.createElement(
+	        'div',
+	        { className: 'clock-button' },
+	        '50'
+	      )
+	    ) //ends wrapper div
+	    ;
 	  }
 
 	});
@@ -24773,11 +24778,6 @@
 	      React.createElement(
 	        'div',
 	        { className: 'wrapper' },
-	        React.createElement(
-	          'div',
-	          { className: 'clock-button' },
-	          '50'
-	        ),
 	        React.createElement(
 	          'div',
 	          { className: 'button-flex' },
