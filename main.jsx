@@ -17,7 +17,7 @@ render: function(){
    return (
     <Router history={ browserHistory }>
         <Redirect from='/' to='/welcome' />
-      <Route path ='/welcome' component={Welcome} />
+        <Route path ='/welcome' component={Welcome} />
         <Route path='/mars-test' component={Question} />
         <Route path='*' component={NotFound} />
     </Router>

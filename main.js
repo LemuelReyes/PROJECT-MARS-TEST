@@ -75,19 +75,19 @@
 	// var ReactDOM = require('react-dom');
 
 	var App = _react2.default.createClass({
-	  displayName: 'App',
+	    displayName: 'App',
 
 
-	  render: function render() {
-	    return _react2.default.createElement(
-	      _reactRouter.Router,
-	      { history: _reactRouter.browserHistory },
-	      _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome' }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/welcome', component: _Welcome2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/mars-test', component: _questionScreen2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
-	    );
-	  }
+	    render: function render() {
+	        return _react2.default.createElement(
+	            _reactRouter.Router,
+	            { history: _reactRouter.browserHistory },
+	            _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome' }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/welcome', component: _Welcome2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/mars-test', component: _questionScreen2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
+	        );
+	    }
 	});
 	//components
 
@@ -24735,28 +24735,29 @@
 	  displayName: 'Question',
 
 
-	  render: function render() {
-	    return(
-	      //this sets the color background
-	      React.createElement(
-	        'div',
-	        { className: 'wrapper' },
-	        React.createElement(
-	          'div',
-	          { className: 'clock-button' },
-	          '50'
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'button-flex' },
-	          React.createElement(
-	            'button',
-	            null,
-	            'Begin Evaluation'
-	          )
-	        )
-	      ) //ends wrapper div
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsElapsed: 60
+	    };
+	  },
 
+	  tick: function tick() {
+	    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
+	  },
+
+	  start: function start() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    setTimeout(this.start, this.props.timeout);
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      'Hello'
 	    );
 	  }
 
@@ -24782,10 +24783,27 @@
 
 
 	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement('button', { onClick: this.takeTest })
+	    return(
+	      //this sets the color background
+	      React.createElement(
+	        'div',
+	        { className: 'wrapper' },
+	        React.createElement(
+	          'div',
+	          { className: 'clock-button' },
+	          '50'
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'button-flex' },
+	          React.createElement(
+	            'button',
+	            null,
+	            'Begin Evaluation'
+	          )
+	        )
+	      ) //ends wrapper div
+
 	    );
 	  }
 

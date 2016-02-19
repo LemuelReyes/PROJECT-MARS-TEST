@@ -5,13 +5,20 @@ var ReactDOM = require('react-dom');
 
 var Welcome = React.createClass ({
 
-render: function(){
-   return (
-     <div>
-     <button onClick={this.takeTest}></button>
-     </div>
- );
-}
+  render: function(){
+     return (
+       //this sets the color background
+       <div className="wrapper">
+
+        <div className="clock-button">50</div>
+
+        <div className="button-flex">
+          <button>Begin Evaluation</button>
+        </div>
+      </div> //ends wrapper div
+
+    );
+  }
 
 });
 
