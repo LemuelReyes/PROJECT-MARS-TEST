@@ -7,6 +7,7 @@ import {Router, Route, browserHistory, Redirect} from 'react-router';
 import Question from './components/question-screen.jsx';
 import Welcome from './components/Welcome.jsx';
 import NotFound from './components/404.jsx';
+import Timer from './components/countdownclock.jsx';
 //
 // var React= require('react');
 // var ReactDOM = require('react-dom');

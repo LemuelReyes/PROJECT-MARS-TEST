@@ -68,12 +68,17 @@
 
 	var _2 = _interopRequireDefault(_);
 
+	var _countdownclock = __webpack_require__(219);
+
+	var _countdownclock2 = _interopRequireDefault(_countdownclock);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//
 	// var React= require('react');
 	// var ReactDOM = require('react-dom');
 
+	//components
 	var App = _react2.default.createClass({
 	    displayName: 'App',
 
@@ -89,8 +94,6 @@
 	        );
 	    }
 	});
-	//components
-
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('#react-mount'));
 
@@ -24735,24 +24738,6 @@
 	  displayName: 'Question',
 
 
-	  getInitialState: function getInitialState() {
-	    return {
-	      secondsElapsed: 60
-	    };
-	  },
-
-	  tick: function tick() {
-	    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
-	  },
-
-	  start: function start() {
-	    this.interval = setInterval(this.tick, 1000);
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    setTimeout(this.start, this.props.timeout);
-	  },
-
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -24837,6 +24822,53 @@
 	});
 
 	module.exports = NotFound;
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(158);
+
+	var Timer = React.createClass({
+	  displayName: 'Timer',
+
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsElapsed: 60
+	    };
+	  },
+
+	  tick: function tick() {
+	    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
+	  },
+
+	  start: function start() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    setTimeout(this.start, this.props.timeout);
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      'Hello'
+	    );
+	  }
+
+	});
+
+	ReactDOM.render(React.createElement(Timer, null), document.querySelector('#react-mount'));
+
+	module.exports = Timer;
 
 /***/ }
 /******/ ]);
