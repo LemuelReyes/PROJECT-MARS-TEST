@@ -13,7 +13,7 @@ var Welcome = React.createClass ({
         <div className="button-flex">
           <button>Begin Evaluation</button>
         </div>
-        
+
       </div> //ends wrapper div
 
     );
