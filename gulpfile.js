@@ -12,7 +12,7 @@ var historyApiFallback = require('connect-history-api-fallback');
 // DA PATHS
 
 var jsMain = './src/**/*jsx';
-var sassMain = './src/main.scss';
+var sassMain = './src/scss/**/*.scss';
 var htmlPath = './src/index.html';
 var basePath = './src';
 var buildPath = './build';
@@ -24,54 +24,20 @@ var rename = require('gulp-rename');
 
 var browserify = require('gulp-browserify');
 
-gulp.task('sass', function(){
- gulp.src('./scss/style.scss')
+gulp.task('compile-scss', function(){
+ gulp.src(sassMain)
  .pipe(sass())
  .pipe(autoprefixer({
    browsers: ['last 2 versions']
  }))
- .pipe(gulp.dest('./build/css'))
  .pipe(minifyCSS())
  .pipe(rename('style.min.css'))
- .pipe(gulp.dest('./build/css'));
+ .pipe(gulp.dest(buildPath));
 });
-
-
-
-gulp.task('compile-react', function() {
- return gulp.src('main.jsx')
- .pipe(plumber())
- .pipe(babel({
-   presets: ['es2015', 'react']
- }))
- .pipe(browserify({
-   insertGlobals: true,
-   debug: true
- }))
- .pipe(gulp.dest('./build/js'));
-});
-
-gulp.task('browser-sync', ['compile-react' /*'compile-scss'*/, 'copy-html'], function() {
-
- browserSync.init({
-   server: {
-     baseDir: './',
-     middleware: [historyApiFallback()]
-   }
- });
-
- gulp.watch(['./scss/*.scss'], ['sass']);
- gulp.watch(['main.jsx'], ['compile-react']);
- gulp.watch(['main.js','./build/css/*.css', 'index.html']).on('change', browserSync.reload);
-
-});
-
-gulp.task('default', ['browser-sync', 'sass']);
-
 
 // need this for project
 gulp.task('compile-react', function() {
-	return gulp.src('main.jsx')
+	return gulp.src(jsMain)
   .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message')}))
   .pipe(webpack({
     output: {
@@ -88,16 +54,29 @@ gulp.task('compile-react', function() {
         }]
     }
   }))
-  .pipe(gulp.dest('./'));
+  .pipe(gulp.dest(buildPath));
 });
-
 
 gulp.task('copy-html', function() {
   gulp.src(htmlPath)
   .pipe(gulp.dest(buildPath));
 });
 
-gulp.watch([htmlPath], ['copy-html']);
-gulp.watch([jsMain], ['compile-react']);
-gulp.watch([sassMain, basePath+'/styles/**/*.scss'], ['compile-scss']);
-gulp.watch([buildPath+'/main.js', buildPath+'/index.html', buildPath+'/main.js']);
+gulp.task('browser-sync', ['compile-react', 'compile-scss', 'copy-html'], function() {
+
+ browserSync.init({
+   server: {
+     baseDir: buildPath,
+     middleware: [historyApiFallback()]
+   }
+ });
+
+ gulp.watch([htmlPath], ['copy-html']);
+ gulp.watch([jsMain], ['compile-react']);
+ gulp.watch([sassMain], ['compile-scss']);
+ gulp.watch([buildPath+'/main.js', buildPath+'/index.html', buildPath+'/style.min.css']).on('change', browserSync.reload);
+
+
+});
+
+gulp.task('default', ['browser-sync']);
