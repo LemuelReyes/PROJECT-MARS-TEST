@@ -22,9 +22,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
 var rename = require('gulp-rename');
 
-
 var browserify = require('gulp-browserify');
-
 
 gulp.task('sass', function(){
  gulp.src('./scss/style.scss')
@@ -53,15 +51,13 @@ gulp.task('compile-react', function() {
  .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('browser-sync', ['compile-react'], function() {
-
+gulp.task('browser-sync', ['compile-react' /*'compile-scss'*/, 'copy-html'], function() {
 
  browserSync.init({
    server: {
      baseDir: './',
      middleware: [historyApiFallback()]
    }
-
  });
 
  gulp.watch(['./scss/*.scss'], ['sass']);
@@ -76,6 +72,7 @@ gulp.task('default', ['browser-sync', 'sass']);
 // need this for project
 gulp.task('compile-react', function() {
 	return gulp.src('main.jsx')
+  .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message')}))
   .pipe(webpack({
     output: {
       filename: 'main.js'
@@ -101,3 +98,6 @@ gulp.task('copy-html', function() {
 });
 
 gulp.watch([htmlPath], ['copy-html']);
+gulp.watch([jsMain], ['compile-react']);
+gulp.watch([sassMain, basePath+'/styles/**/*.scss'], ['compile-scss']);
+gulp.watch([buildPath+'/main.js', buildPath+'/index.html', buildPath+'/main.js']);
