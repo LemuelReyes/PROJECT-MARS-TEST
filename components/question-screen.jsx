@@ -9,13 +9,6 @@ render: function(){
    return (
      //this sets the color background
      <div className="wrapper">
-       <header>
-         <h1>mars</h1>
-
-         <div className="rocket-container">
-              <i className="fa fa-space-shuttle"></i>
-         </div>
-       </header>
 
       <div className="clock-button">50</div>
 
@@ -24,7 +17,7 @@ render: function(){
       </div>
     </div> //ends wrapper div
 
-   )
+  );
 }
 
 });

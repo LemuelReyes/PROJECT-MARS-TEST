@@ -7,6 +7,7 @@ var browserSync = require('browser-sync');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
+var historyApiFallback = require('connect-history-api-fallback');
 
 // DA PATHS
 
@@ -57,8 +58,10 @@ gulp.task('browser-sync', ['compile-react'], function() {
 
  browserSync.init({
    server: {
-     baseDir: './'
+     baseDir: './',
+     middleware: [historyApiFallback()]
    }
+
  });
 
  gulp.watch(['./scss/*.scss'], ['sass']);
@@ -90,3 +93,11 @@ gulp.task('compile-react', function() {
   }))
   .pipe(gulp.dest('./'));
 });
+
+
+gulp.task('copy-html', function() {
+  gulp.src(htmlPath)
+  .pipe(gulp.dest(buildPath));
+});
+
+gulp.watch([htmlPath], ['copy-html']);
