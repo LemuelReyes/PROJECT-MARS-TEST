@@ -3,7 +3,9 @@
 var React= require('react');
 var ReactDOM = require('react-dom');
 
-var Question = React.createClass ({
+import Timer from './components/countdownclock.jsx';
+
+var QuestionScreen = React.createClass ({
 
 render: function(){
    return (
@@ -21,4 +23,4 @@ render: function(){
 
 ReactDOM.render(<Question/>, document.querySelector('#react-mount'));
 
-module.exports= Question;
+module.exports= QuestionScreen;

@@ -41,16 +41,6 @@ footer {
   width: 80vw;
 }
 
-header {
-  background-color: white;
-  height: 100vh;
-  min-width: 150px;
-  max-width: 150px;
-  flex: 0 1 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .clock-button {
   font-family: 'digital-dream';
@@ -97,6 +87,21 @@ button {
     cursor: pointer;
   }
 
+  /*======================================================*/
+  //                    HEADER                            //
+  /*======================================================*/
+
+header {
+    background-color: white;
+    height: 100vh;
+    min-width: 150px;
+    max-width: 150px;
+    flex: 0 1 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 h1 {
   letter-spacing: -10px;
   font-family: 'Arial', sans-serif;
@@ -127,12 +132,32 @@ i.fa-space-shuttle {
 }
 
 /*======================================================*/
+//               QUESTION FORMS                         //
+/*======================================================*/
 
 .question-container {
-  height: 33vh;
-  width: 50vw;
+  height: 29vh;
+  width: 68%;
   padding: 2rem;
   background-color: white;
   align-self: center;
   margin: 0 auto;
+}
+
+span {
+  color: black;
+  font-size: 1.6rem;
+}
+
+input[type] {
+  width: 100%;
+  height: 2rem;
+  border: none;
+  border-bottom: 1px solid #222;
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+.submit-button {
+  float:right;
 }

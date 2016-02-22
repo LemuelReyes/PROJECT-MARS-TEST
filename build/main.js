@@ -46,10 +46,10 @@
 
 	__webpack_require__(1);
 	__webpack_require__(219);
-	__webpack_require__(221);
+	__webpack_require__(222);
 	__webpack_require__(220);
 	__webpack_require__(217);
-	__webpack_require__(222);
+	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\Drew\\Desktop\\PROJECT\\REACT-PROJECT\\REACT-MARS\\src\\components\\question.jsx\""); }());
 	__webpack_require__(223);
 	module.exports = __webpack_require__(218);
 
@@ -86,13 +86,24 @@
 
 	var _countdownclock2 = _interopRequireDefault(_countdownclock);
 
+	var _question = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/question.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _question2 = _interopRequireDefault(_question);
+
+	var _accepted = __webpack_require__(222);
+
+	var _accepted2 = _interopRequireDefault(_accepted);
+
+	var _rejected = __webpack_require__(223);
+
+	var _rejected2 = _interopRequireDefault(_rejected);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//
 	// var React= require('react');
 	// var ReactDOM = require('react-dom');
 
-	//components
 	var App = _react2.default.createClass({
 	    displayName: 'App',
 
@@ -104,10 +115,15 @@
 	            _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome' }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '/welcome', component: _Welcome2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '/mars-test', component: _questionScreen2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/mars-test-forms', component: Question }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/passed', component: _accepted2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/rejected', component: _rejected2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
 	        );
 	    }
 	});
+	//components
+
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('#react-mount'));
 
@@ -24743,13 +24759,19 @@
 
 	'use strict';
 
+	var _countdownclock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/countdownclock.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _countdownclock2 = _interopRequireDefault(_countdownclock);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	// 'use strict';
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
 
-	var Question = React.createClass({
-	  displayName: 'Question',
+	var QuestionScreen = React.createClass({
+	  displayName: 'QuestionScreen',
 
 
 	  render: function render() {
@@ -24759,7 +24781,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'clock-button' },
-	        React.createElement(Timer, null)
+	        React.createElement(_countdownclock2.default, null)
 	      )
 	    ) //ends wrapper div
 	    ;
@@ -24769,7 +24791,7 @@
 
 	ReactDOM.render(React.createElement(Question, null), document.querySelector('#react-mount'));
 
-	module.exports = Question;
+	module.exports = QuestionScreen;
 
 /***/ },
 /* 218 */
@@ -24885,22 +24907,59 @@
 	module.exports = Timer;
 
 /***/ },
-/* 221 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
+/* 221 */,
 /* 222 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(159);
+
+	var Accepted = React.createClass({
+	  displayName: 'Accepted',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      'accepted!'
+	    );
+	  }
+
+	});
+
+	module.exports = Accepted;
 
 /***/ },
 /* 223 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(159);
+
+	var Rejected = React.createClass({
+	  displayName: 'Rejected',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      'rejected!'
+	    );
+	  }
+
+	});
+
+	module.exports = Rejected;
 
 /***/ }
 /******/ ]);
