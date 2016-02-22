@@ -47,7 +47,7 @@
 	__webpack_require__(1);
 	__webpack_require__(219);
 	__webpack_require__(222);
-	__webpack_require__(220);
+	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\Drew\\Desktop\\PROJECT\\REACT-PROJECT\\REACT-MARS\\src\\components\\countdownclock.jsx\""); }());
 	__webpack_require__(217);
 	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\Drew\\Desktop\\PROJECT\\REACT-PROJECT\\REACT-MARS\\src\\components\\question.jsx\""); }());
 	__webpack_require__(223);
@@ -82,7 +82,7 @@
 
 	var _2 = _interopRequireDefault(_);
 
-	var _countdownclock = __webpack_require__(220);
+	var _countdownclock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/countdownclock.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _countdownclock2 = _interopRequireDefault(_countdownclock);
 
@@ -24860,53 +24860,7 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	// 'use strict';
-
-	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(159);
-
-	var Timer = React.createClass({
-	  displayName: 'Timer',
-
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      secondsElapsed: 60
-	    };
-	  },
-
-	  tick: function tick() {
-	    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
-	  },
-
-	  start: function start() {
-	    this.interval = setInterval(this.tick, 1000);
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    setTimeout(this.start, this.props.timeout);
-	  },
-
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      'Hello'
-	    );
-	  }
-
-	});
-
-	ReactDOM.render(React.createElement(Timer, null), document.querySelector('#react-mount'));
-
-	module.exports = Timer;
-
-/***/ },
+/* 220 */,
 /* 221 */,
 /* 222 */
 /***/ function(module, exports, __webpack_require__) {
