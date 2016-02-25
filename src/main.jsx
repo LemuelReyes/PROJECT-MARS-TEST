@@ -8,7 +8,7 @@ import QuestionScreen from './components/question-screen.jsx';
 import Welcome from './components/Welcome.jsx';
 import NotFound from './components/404.jsx';
 import Timer from './components/countdownclock.jsx';
-import Questions from './components/question.jsx';
+import Question from './components/question.jsx';
 import Accepted from './components/accepted.jsx';
 import Rejected from './components/rejected.jsx';
 

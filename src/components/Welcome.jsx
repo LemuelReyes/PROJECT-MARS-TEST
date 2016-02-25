@@ -1,7 +1,7 @@
 // 'use strict';
 
 var React= require('react');
-var ReactDOM = require('react-dom');
+var QuestionScreen = require('./question-screen.jsx');
 
 var Welcome = React.createClass ({
 
@@ -12,13 +12,13 @@ var Welcome = React.createClass ({
 
         <div className="button-flex">
           <button>Begin Evaluation</button>
+          <QuestionScreen />
         </div>
 
       </div> //ends wrapper div
 
     );
   }
-
 });
 
 module.exports= Welcome;

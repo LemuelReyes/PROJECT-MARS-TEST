@@ -45,13 +45,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(219);
+	__webpack_require__(220);
 	__webpack_require__(222);
-	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\Drew\\Desktop\\PROJECT\\REACT-PROJECT\\REACT-MARS\\src\\components\\countdownclock.jsx\""); }());
+	__webpack_require__(218);
 	__webpack_require__(217);
-	(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\Users\\Drew\\Desktop\\PROJECT\\REACT-PROJECT\\REACT-MARS\\src\\components\\question.jsx\""); }());
+	__webpack_require__(221);
 	__webpack_require__(223);
-	module.exports = __webpack_require__(218);
+	module.exports = __webpack_require__(219);
 
 
 /***/ },
@@ -74,19 +74,19 @@
 
 	var _questionScreen2 = _interopRequireDefault(_questionScreen);
 
-	var _Welcome = __webpack_require__(218);
+	var _Welcome = __webpack_require__(219);
 
 	var _Welcome2 = _interopRequireDefault(_Welcome);
 
-	var _ = __webpack_require__(219);
+	var _ = __webpack_require__(220);
 
 	var _2 = _interopRequireDefault(_);
 
-	var _countdownclock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/countdownclock.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _countdownclock = __webpack_require__(218);
 
 	var _countdownclock2 = _interopRequireDefault(_countdownclock);
 
-	var _question = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/question.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _question = __webpack_require__(221);
 
 	var _question2 = _interopRequireDefault(_question);
 
@@ -115,7 +115,7 @@
 	            _react2.default.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome' }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '/welcome', component: _Welcome2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '/mars-test', component: _questionScreen2.default }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/mars-test-forms', component: Question }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/mars-test-forms', component: _question2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '/passed', component: _accepted2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '/rejected', component: _rejected2.default }),
 	            _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
@@ -24759,16 +24759,11 @@
 
 	'use strict';
 
-	var _countdownclock = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/countdownclock.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
-	var _countdownclock2 = _interopRequireDefault(_countdownclock);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	// 'use strict';
 
 	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(159);
+
+	var Timer = __webpack_require__(218);
 
 	var QuestionScreen = React.createClass({
 	  displayName: 'QuestionScreen',
@@ -24781,15 +24776,13 @@
 	      React.createElement(
 	        'div',
 	        { className: 'clock-button' },
-	        React.createElement(_countdownclock2.default, null)
+	        React.createElement(Timer, null)
 	      )
 	    ) //ends wrapper div
 	    ;
 	  }
 
 	});
-
-	ReactDOM.render(React.createElement(Question, null), document.querySelector('#react-mount'));
 
 	module.exports = QuestionScreen;
 
@@ -24802,7 +24795,68 @@
 	// 'use strict';
 
 	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(159);
+
+	var Timer = React.createClass({
+	  displayName: 'Timer',
+
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsElapsed: 60
+	    };
+	  },
+
+	  tick: function tick() {
+	    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
+	    if (this.state.secondsElapsed === 0) {
+	      this.stopTimer();
+	    }
+	  },
+
+	  start: function start() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+
+	  timeDone: function timeDone() {
+	    if (this.state.secondsElapsed === 60) {
+	      return '0:00';
+	    } else {
+	      return '';
+	    }
+	  },
+
+	  timesUp: function timesUp() {
+	    if (this.secondsLeft === 0) {
+	      browserHistory.push({ Rejected: Rejected });
+	    }
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    setTimeout(this.start, this.props.timeout);
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.state.secondsElapsed
+	    );
+	  }
+
+	});
+
+	module.exports = Timer;
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+	var QuestionScreen = __webpack_require__(217);
 
 	var Welcome = React.createClass({
 	  displayName: 'Welcome',
@@ -24821,19 +24875,19 @@
 	            'button',
 	            null,
 	            'Begin Evaluation'
-	          )
+	          ),
+	          React.createElement(QuestionScreen, null)
 	        )
 	      ) //ends wrapper div
 
 	    );
 	  }
-
 	});
 
 	module.exports = Welcome;
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24860,8 +24914,89 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 220 */,
-/* 221 */,
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(159);
+
+	var Questions = React.createClass({
+	  displayName: 'Questions',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'div',
+	        { className: 'question-container' },
+	        React.createElement(
+	          'span',
+	          null,
+	          'Could you live the rest of your life without your family and friends?'
+	        ),
+	        React.createElement(
+	          'form',
+	          { className: 'flex-form' },
+	          React.createElement('input', { type: 'text', value: '', placeholder: '' }),
+	          React.createElement(
+	            'button',
+	            { type: 'submit', className: 'submit-button' },
+	            'Submit Answer'
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'question-container' },
+	        React.createElement(
+	          'span',
+	          null,
+	          '  If x = combustible alignments funneled through the module-x generator, how much would the gravitational propellation consume fuel?'
+	        ),
+	        React.createElement(
+	          'form',
+	          { className: 'flex-form' },
+	          React.createElement('input', { type: 'text', value: '', placeholder: '' }),
+	          React.createElement(
+	            'button',
+	            { type: 'submit', className: 'submit-button' },
+	            'Submit Answer'
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'question-container' },
+	        React.createElement(
+	          'span',
+	          null,
+	          'Could you put the mission before your shipmates?'
+	        ),
+	        React.createElement(
+	          'form',
+	          { className: 'flex-form' },
+	          React.createElement('input', { type: 'text', value: '', placeholder: '' }),
+	          React.createElement(
+	            'button',
+	            { type: 'submit', className: 'submit-button' },
+	            'Submit Answer'
+	          )
+	        )
+	      )
+	    );
+	  }
+
+	});
+
+	module.exports = Questions;
+
+/***/ },
 /* 222 */
 /***/ function(module, exports, __webpack_require__) {
 

@@ -1,7 +1,6 @@
 // 'use strict';
 
 var React= require('react');
-var ReactDOM = require('react-dom');
 
 var Timer = React.createClass ({
 
@@ -15,6 +14,7 @@ var Timer = React.createClass ({
       this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
       if(this.state.secondsElapsed === 0){
          this.stopTimer();
+       }
   },
 
   start: function() {
@@ -27,6 +27,7 @@ var Timer = React.createClass ({
      } else {
         return '';
      }
+  },
 
   timesUp: function() {
       if(this.secondsLeft === 0) {
@@ -41,12 +42,12 @@ var Timer = React.createClass ({
 
 render: function(){
    return (
-     <div><Timer/></div>
+       <div>
+        {this.state.secondsElapsed}
+       </div>
   )
 }
 
 });
-
-ReactDOM.render(<Timer/>, document.querySelector('#react-mount'));
 
 module.exports= Timer;
