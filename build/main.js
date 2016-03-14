@@ -24865,70 +24865,41 @@
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
-
+	var questionsList = [{
+	  'question': 'Could you live the rest of your life without your family and friends?',
+	  'answer': 'yes'
+	}, { 'question': 'What color is the sky?',
+	  'answer': 'blue'
+	}];
 	var Questions = React.createClass({
 	  displayName: 'Questions',
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      currentQuestion: 0
+	    };
+	  },
+	  _handleClick: function _handleClick() {
+	    this.setState({ currentQuestion: this.state.currentQuestion + 1 });
+	  },
 
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'question-container' },
 	      React.createElement(
-	        'div',
-	        { className: 'question-container' },
-	        React.createElement(
-	          'span',
-	          null,
-	          'Could you live the rest of your life without your family and friends?'
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'flex-form' },
-	          React.createElement('input', { type: 'text', value: '', placeholder: '' }),
-	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'submit-button' },
-	            'Submit Answer'
-	          )
-	        )
+	        'span',
+	        null,
+	        questionsList[this.state.currentQuestion].question
 	      ),
 	      React.createElement(
-	        'div',
-	        { className: 'question-container' },
+	        'form',
+	        { className: 'flex-form' },
+	        React.createElement('input', { type: 'text', value: '', placeholder: '' }),
 	        React.createElement(
-	          'span',
-	          null,
-	          '  If x = combustible alignments funneled through the module-x generator, how much would the gravitational propellation consume fuel?'
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'flex-form' },
-	          React.createElement('input', { type: 'text', value: '', placeholder: '' }),
-	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'submit-button' },
-	            'Submit Answer'
-	          )
-	        )
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'question-container' },
-	        React.createElement(
-	          'span',
-	          null,
-	          'Could you put the mission before your shipmates?'
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'flex-form' },
-	          React.createElement('input', { type: 'text', value: '', placeholder: '' }),
-	          React.createElement(
-	            'button',
-	            { type: 'submit', className: 'submit-button' },
-	            'Submit Answer'
-	          )
+	          'button',
+	          { type: 'submit', className: 'submit-button', onClick: this._handleClick },
+	          'Submit Answer'
 	        )
 	      )
 	    );
