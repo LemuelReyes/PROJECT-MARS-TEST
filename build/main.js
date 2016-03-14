@@ -45,13 +45,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(220);
+	__webpack_require__(221);
 	__webpack_require__(222);
 	__webpack_require__(218);
+	__webpack_require__(224);
 	__webpack_require__(217);
-	__webpack_require__(221);
+	__webpack_require__(225);
+	__webpack_require__(219);
 	__webpack_require__(223);
-	module.exports = __webpack_require__(219);
+	module.exports = __webpack_require__(220);
 
 
 /***/ },
@@ -74,11 +76,11 @@
 
 	var _questionScreen2 = _interopRequireDefault(_questionScreen);
 
-	var _Welcome = __webpack_require__(219);
+	var _Welcome = __webpack_require__(220);
 
 	var _Welcome2 = _interopRequireDefault(_Welcome);
 
-	var _ = __webpack_require__(220);
+	var _ = __webpack_require__(221);
 
 	var _2 = _interopRequireDefault(_);
 
@@ -86,7 +88,7 @@
 
 	var _countdownclock2 = _interopRequireDefault(_countdownclock);
 
-	var _question = __webpack_require__(221);
+	var _question = __webpack_require__(219);
 
 	var _question2 = _interopRequireDefault(_question);
 
@@ -24759,11 +24761,15 @@
 
 	'use strict';
 
+	var _reactRouter = __webpack_require__(160);
+
 	// 'use strict';
 
 	var React = __webpack_require__(2);
 
+
 	var Timer = __webpack_require__(218);
+	var Questions = __webpack_require__(219);
 
 	var QuestionScreen = React.createClass({
 	  displayName: 'QuestionScreen',
@@ -24777,7 +24783,8 @@
 	        'div',
 	        { className: 'clock-button' },
 	        React.createElement(Timer, null)
-	      )
+	      ),
+	      React.createElement(Questions, null)
 	    ) //ends wrapper div
 	    ;
 	  }
@@ -24792,9 +24799,10 @@
 
 	'use strict';
 
-	// 'use strict';
+	var _reactRouter = __webpack_require__(160);
 
-	var React = __webpack_require__(2);
+	var React = __webpack_require__(2); // 'use strict';
+
 
 	var Timer = React.createClass({
 	  displayName: 'Timer',
@@ -24827,7 +24835,7 @@
 
 	  timesUp: function timesUp() {
 	    if (this.secondsLeft === 0) {
-	      browserHistory.push({ Rejected: Rejected });
+	      _reactRouter.browserHistory.push({ Rejected: Rejected });
 	    }
 	  },
 
@@ -24849,72 +24857,6 @@
 
 /***/ },
 /* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	// 'use strict';
-
-	var React = __webpack_require__(2);
-	var QuestionScreen = __webpack_require__(217);
-
-	var Welcome = React.createClass({
-	  displayName: 'Welcome',
-
-
-	  render: function render() {
-	    return(
-	      //this sets the color background
-	      React.createElement(
-	        'div',
-	        { className: 'wrapper' },
-	        React.createElement(
-	          'div',
-	          { className: 'button-flex' },
-	          React.createElement(
-	            'button',
-	            null,
-	            'Begin Evaluation'
-	          ),
-	          React.createElement(QuestionScreen, null)
-	        )
-	      ) //ends wrapper div
-
-	    );
-	  }
-	});
-
-	module.exports = Welcome;
-
-/***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	// 'use strict';
-
-	var React = __webpack_require__(2);
-	var ReactDOM = __webpack_require__(159);
-
-	var NotFound = React.createClass({
-	  displayName: 'NotFound',
-
-
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      '404 Not Found'
-	    );
-	  }
-
-	});
-
-	module.exports = NotFound;
-
-/***/ },
-/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24997,6 +24939,74 @@
 	module.exports = Questions;
 
 /***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactRouter = __webpack_require__(160);
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+
+
+	var Welcome = React.createClass({
+	  displayName: 'Welcome',
+	  transitionTakeTest: function transitionTakeTest() {
+	    _reactRouter.browserHistory.push('/mars-test');
+	  },
+	  render: function render() {
+	    return(
+	      //this sets the color background
+	      React.createElement(
+	        'div',
+	        { className: 'wrapper' },
+	        React.createElement(
+	          'div',
+	          { className: 'button-flex' },
+	          React.createElement(
+	            'button',
+	            { onClick: this.transitionTakeTest },
+	            'Begin Evaluation'
+	          )
+	        )
+	      ) //ends wrapper div
+
+	    );
+	  }
+	});
+
+	module.exports = Welcome;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(159);
+
+	var NotFound = React.createClass({
+	  displayName: 'NotFound',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      '404 Not Found'
+	    );
+	  }
+
+	});
+
+	module.exports = NotFound;
+
+/***/ },
 /* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25049,6 +25059,101 @@
 	});
 
 	module.exports = Rejected;
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactRouter = __webpack_require__(160);
+
+	var React = __webpack_require__(2); // 'use strict';
+
+
+	var Timer = React.createClass({
+	  displayName: 'Timer',
+
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsElapsed: 60
+	    };
+	  },
+
+	  tick: function tick() {
+	    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
+	    if (this.state.secondsElapsed === 0) {
+	      this.stopTimer();
+	    }
+	  },
+
+	  start: function start() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+
+	  timeDone: function timeDone() {
+	    if (this.state.secondsElapsed === 60) {
+	      return '0:00';
+	    } else {
+	      return '';
+	    }
+	  },
+
+	  timesUp: function timesUp() {
+	    if (this.secondsLeft === 0) {
+	      _reactRouter.browserHistory.push({ Rejected: Rejected });
+	    }
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    setTimeout(this.start, this.props.timeout);
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.state.secondsElapsed
+	    );
+	  }
+
+	});
+
+	module.exports = Timer;
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// 'use strict';
+
+	var React = __webpack_require__(2);
+
+	var Timer = __webpack_require__(218);
+
+	var QuestionScreen = React.createClass({
+	  displayName: 'QuestionScreen',
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'wrapper' },
+	      React.createElement(
+	        'div',
+	        { className: 'clock-button' },
+	        React.createElement(Timer, null)
+	      )
+	    ) //ends wrapper div
+	    ;
+	  }
+
+	});
+
+	module.exports = QuestionScreen;
 
 /***/ }
 /******/ ]);

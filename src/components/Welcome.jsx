@@ -1,18 +1,21 @@
 // 'use strict';
 
 var React= require('react');
-var QuestionScreen = require('./question-screen.jsx');
+import {browserHistory} from 'react-router';
 
 var Welcome = React.createClass ({
 
-  render: function(){
+transitionTakeTest(){
+  browserHistory.push('/mars-test');
+},
+
+  render(){
      return (
        //this sets the color background
        <div className="wrapper">
 
         <div className="button-flex">
-          <button>Begin Evaluation</button>
-          <QuestionScreen />
+          <button onClick={this.transitionTakeTest}>Begin Evaluation</button>
         </div>
 
       </div> //ends wrapper div
