@@ -24865,24 +24865,34 @@
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
+
+	// QUESTIONS
 	var questionsList = [{
 	  'question': 'Could you live the rest of your life without your family and friends?',
 	  'answer': 'yes'
-	}, { 'question': 'What color is the sky?',
-	  'answer': 'blue'
+	}, { 'question': 'If the quantum generator pulsates at 350 rpm and the heat expulsion dissipates at 20 cubic meters per second, how much would the spaceship consume fuel?',
+	  'answer': 'alot'
+	}, { 'question': 'Are you mentally, physically, and emotionally fit as disclosed in your record files?',
+	  'answer': 'yes'
 	}];
+
 	var Questions = React.createClass({
 	  displayName: 'Questions',
 
+
+	  // current question is the first item in the questionsList array
 	  getInitialState: function getInitialState() {
 	    return {
 	      currentQuestion: 0
 	    };
 	  },
+
+	  // when a user clicks, it will change the initial state and add 1, thus rendering the next list in the array
 	  _handleClick: function _handleClick() {
 	    this.setState({ currentQuestion: this.state.currentQuestion + 1 });
 	  },
 
+	  // render the new state as per user's interaction
 	  render: function render() {
 	    return React.createElement(
 	      'div',
