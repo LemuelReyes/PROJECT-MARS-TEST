@@ -1,0 +1,27 @@
+.button-flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  outline: none;
+  border: 2px solid white;
+  background: #EDF1F2;
+  padding: 1rem 4rem;
+  color: #222;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  border-radius: 2px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }

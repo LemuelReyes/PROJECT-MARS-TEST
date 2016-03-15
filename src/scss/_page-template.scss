@@ -1,0 +1,72 @@
+/*======================================================*/
+//                    HEADER                            //
+/*======================================================*/
+
+header {
+  background-color: white;
+  height: 100vh;
+  min-width: 150px;
+  max-width: 150px;
+  flex: 0 1 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+letter-spacing: -10px;
+font-family: 'Arial', sans-serif;
+font-weight: bold;
+text-transform: uppercase;
+color: #EDF1F2;
+transform: rotate(-90deg);
+position: absolute;
+top: 6.2rem;
+left: -3.2rem;
+font-size: 6.3rem;
+}
+
+.rocket-container {
+height: 100px;
+width: 100px;
+background-color: #FF8969;
+border-radius: 50px;
+left: -8.7rem;
+}
+
+i.fa-space-shuttle {
+transform: rotate(-90deg);
+font-size: 4rem;
+position: relative;
+left: 8px;
+top: 17px;
+}
+
+//  BODY
+
+.body-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+body {
+
+  font-size:16px;
+  color: #ffffff;
+  font-family: Open Sans Light;
+  background-color: #FF8B69;
+}
+
+footer {
+  color: #c2c2c2;
+}
+
+.border {
+  color: #dbdbdb;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+}

@@ -27,21 +27,24 @@ getInitialState: function() {
 },
 
 // when a user clicks, it will change the initial state and add 1, thus rendering the next list in the array
-_handleClick: function() {
+_handleClick: function(event) {
+  event.preventDefault();
+
   this.setState({currentQuestion:this.state.currentQuestion+1});
 },
 
 // render the new state as per user's interaction
 render: function(){
    return (
-
+     <div class="question-wrapper">
        <div className="question-container">
          <span>{questionsList[this.state.currentQuestion].question}</span>
          <form className="flex-form">
-           <input type="text" value="" placeholder="" />
+           <input type="text" value="" placeholder=""></input>
            <button type="submit" className="submit-button" onClick={this._handleClick}>Submit Answer</button>
          </form>
        </div>
+     </div>
  );
 }
 
