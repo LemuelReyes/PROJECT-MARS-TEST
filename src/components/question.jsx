@@ -40,7 +40,7 @@ render: function(){
        <div className="question-container">
          <span>{questionsList[this.state.currentQuestion].question}</span>
          <form className="flex-form">
-           <input type="text" value="" placeholder=""></input>
+           <input type="text" placeholder=""></input>
            <button type="submit" className="submit-button" onClick={this._handleClick}>Submit Answer</button>
          </form>
        </div>
